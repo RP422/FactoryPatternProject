@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Class1
+    public abstract class LanguageFactory
     {
+        public abstract string[] GetAvalibleComponents();
+
+        public abstract void AddComponent(string s);
+        public abstract void RemoveComponent();
+
+        public abstract string GetRepresentation();
     }
 }
