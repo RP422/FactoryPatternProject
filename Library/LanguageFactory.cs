@@ -8,11 +8,14 @@ namespace Library
 {
     public abstract class LanguageFactory
     {
+        public abstract string GetLanguageName();
         public abstract string[] GetAvalibleComponents();
 
         public abstract void AddComponent(string s);
         public abstract void RemoveComponent();
 
         public abstract string GetRepresentation();
+
+        public abstract string GenerateUI();
     }
 }
