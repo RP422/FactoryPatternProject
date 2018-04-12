@@ -22,10 +22,10 @@ namespace GuiBuilderUI
     public partial class MainWindow : Window
     {
         private LanguageFactory[] factories = 
-            {
-                new HtmlLanguageFactory(),
-                new WpfLanguageFactory()
-            };
+        {
+            new HtmlLanguageFactory(),
+            new WpfLanguageFactory()
+        };
 
         private string[] languages;
         private string[] currentComponents;
@@ -40,13 +40,15 @@ namespace GuiBuilderUI
             {
                 languages[x] = factories[x].GetLanguageName();
             }
+
+            SwitchLanguage(0);
         }
 
-        private void languageSwitchButton_Click(object sender, RoutedEventArgs e)
+        private void SwitchLanguage(int factoryIndex)
         {
             // Define the new factory
-            string language = languages[languageComboBox.SelectedIndex];
-            switch(language)
+            string language = languages[factoryIndex];
+            switch (language)
             {
                 case "HTML":
                     currentFactory = new HtmlLanguageFactory();
@@ -69,6 +71,11 @@ namespace GuiBuilderUI
 
             // Clear out the list of components
             componentList.Content = "";
+        }
+
+        private void languageSwitchButton_Click(object sender, RoutedEventArgs e)
+        {
+            SwitchLanguage(languageComboBox.SelectedIndex);
         }
 
         private void addComponentButton_Click(object sender, RoutedEventArgs e)
