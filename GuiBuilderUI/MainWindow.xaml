@@ -8,12 +8,12 @@
         Title="GUI Builder" Height="300" Width="500">
     <Grid Margin="0" Background="#FFFFDD00">
         <ComboBox x:Name="languageComboBox" HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Top" Width="135"/>
-        <Button x:Name="languageSwitchButton" Content="Switch Language" HorizontalAlignment="Left" Margin="155,15,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button x:Name="languageSwitchButton" Content="Switch Language" HorizontalAlignment="Left" Margin="155,15,0,0" VerticalAlignment="Top" Width="125" Click="languageSwitchButton_Click"/>
         <ComboBox x:Name="componentComboBox" HorizontalAlignment="Left" Margin="15,60,0,0" VerticalAlignment="Top" Width="135"/>
-        <Button x:Name="addComponentButton" Content="Add Component" HorizontalAlignment="Left" Margin="155,60,0,0" VerticalAlignment="Top" Width="125"/>
-        <Button x:Name="removeComponentButton" Content="Remove Component" HorizontalAlignment="Left" Margin="155,87,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button x:Name="addComponentButton" Content="Add Component" HorizontalAlignment="Left" Margin="155,60,0,0" VerticalAlignment="Top" Width="125" Click="addComponentButton_Click"/>
+        <Button x:Name="removeComponentButton" Content="Remove Component" HorizontalAlignment="Left" Margin="155,87,0,0" VerticalAlignment="Top" Width="125" Click="removeComponentButton_Click"/>
         <Label x:Name="componentList" HorizontalAlignment="Right" Margin="0,15,15,15" Width="170"/>
-        <Button x:Name="generateButton" Content="Generate UI" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom" Width="100"/>
+        <Button x:Name="generateButton" Content="Generate UI" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom" Width="100" Click="generateButton_Click"/>
 
     </Grid>
 </Window>
