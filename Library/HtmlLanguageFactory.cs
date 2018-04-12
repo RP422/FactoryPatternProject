@@ -13,9 +13,19 @@ namespace Library
             throw new NotImplementedException();
         }
 
+        public override string GenerateUI()
+        {
+            throw new NotImplementedException();
+        }
+
         public override string[] GetAvalibleComponents()
         {
             throw new NotImplementedException();
+        }
+
+        public override string GetLanguageName()
+        {
+            return "HTML";
         }
 
         public override string GetRepresentation()

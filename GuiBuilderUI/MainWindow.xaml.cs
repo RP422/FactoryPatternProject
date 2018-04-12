@@ -83,11 +83,25 @@ namespace GuiBuilderUI
         private void addComponentButton_Click(object sender, RoutedEventArgs e)
         {
             currentFactory.AddComponent(currentComponents[componentComboBox.SelectedIndex]);
+            componentList.Content += "\n" + currentComponents[componentComboBox.SelectedIndex];
         }
 
         private void removeComponentButton_Click(object sender, RoutedEventArgs e)
         {
             currentFactory.RemoveComponent();
+            string content = componentList.Content.ToString();
+            int lastLineBreak = content.LastIndexOf('\n');
+
+            if(lastLineBreak != -1)
+            {
+                content = content.Substring(lastLineBreak);
+            }
+            else
+            {
+                content = "";
+            }
+
+            componentList.Content = content;
         }
 
         private void generateButton_Click(object sender, RoutedEventArgs e)
