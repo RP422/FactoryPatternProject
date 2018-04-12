@@ -21,26 +21,28 @@ namespace GuiBuilderUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private LanguageFactory[] factories = 
+        private LanguageFactory[] allFactories = 
         {
             new HtmlLanguageFactory(),
             new WpfLanguageFactory()
         };
 
+        private LanguageFactory currentFactory;
+
         private string[] languages;
         private string[] currentComponents;
 
-        private LanguageFactory currentFactory;
         public MainWindow()
         {
             InitializeComponent();
 
-            string[] languages = new string[factories.Length];
-            for(int x = 0; x < factories.Length; x++)
+            string[] languages = new string[allFactories.Length];
+            for(int x = 0; x < allFactories.Length; x++)
             {
-                languages[x] = factories[x].GetLanguageName();
+                languages[x] = allFactories[x].GetLanguageName();
             }
 
+            componentComboBox.SelectedIndex = 0;
             SwitchLanguage(0);
         }
 
@@ -48,7 +50,7 @@ namespace GuiBuilderUI
         {
             // Define the new factory
             string language = languages[factoryIndex];
-            switch (language)
+            switch (language) // This clears the factory's memory of the added components as well
             {
                 case "HTML":
                     currentFactory = new HtmlLanguageFactory();
