@@ -28,11 +28,6 @@ namespace Library
             return "HTML";
         }
 
-        public override string GetRepresentation()
-        {
-            throw new NotImplementedException();
-        }
-
         public override void RemoveComponent()
         {
             throw new NotImplementedException();
