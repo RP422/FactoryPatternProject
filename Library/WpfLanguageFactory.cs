@@ -8,14 +8,9 @@ namespace Library
 {
     public class WpfLanguageFactory : LanguageFactory
     {
-        public override void AddComponent(string s)
+        public override string GetLanguageName()
         {
-            throw new NotImplementedException();
-        }
-
-        public override string GenerateUI()
-        {
-            throw new NotImplementedException();
+            return "WPF";
         }
 
         public override string[] GetAvalibleComponents()
@@ -23,12 +18,7 @@ namespace Library
             throw new NotImplementedException();
         }
 
-        public override string GetLanguageName()
-        {
-            return "WPF";
-        }
-
-        public override void RemoveComponent()
+        public override string GenerateUI()
         {
             throw new NotImplementedException();
         }
