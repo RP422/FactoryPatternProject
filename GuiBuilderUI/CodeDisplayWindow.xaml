@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GuiBuilderUI"
         mc:Ignorable="d"
-        Title="CodeDisplayWindow" Height="400" Width="500">
+        Title="Here's your generated UI!" Height="400" Width="500">
     <Grid>
         <Label x:Name="CodeLabel" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
