@@ -30,7 +30,7 @@ namespace GuiBuilderUI
         private LanguageFactory currentFactory;
 
         private string[] languages;
-        private string[] currentComponents;
+        private List<string> currentComponents;
 
         public MainWindow()
         {
@@ -62,9 +62,9 @@ namespace GuiBuilderUI
             {
                 componentComboBox.Items.RemoveAt(0);
             }
-            for (int x = 0; x < currentComponents.Length; x++)
+            for (int x = 0; x < currentComponents.Count; x++)
             {
-                componentComboBox.Items.Add(currentComponents[x]);
+                componentComboBox.Items.Add(currentComponents.ElementAt(x));
             }
 
             // Clear out the list of components

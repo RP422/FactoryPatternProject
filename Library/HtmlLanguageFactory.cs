@@ -13,7 +13,7 @@ namespace Library
             return "HTML";
         }
 
-        public override string[] GetAvalibleComponents()
+        public override List<string> GetAvalibleComponents()
         {
             throw new NotImplementedException();
         }
