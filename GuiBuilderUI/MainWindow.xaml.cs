@@ -21,10 +21,10 @@ namespace GuiBuilderUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private LanguageFactory[] allFactories = 
-        {
-            new HtmlLanguageFactory(),
-            new WpfLanguageFactory()
+        private LanguageFactory[] allFactories = // To add a new language to this window, the only change you would 
+        {                                        //   need to make is adding a reference to an instance of it here.
+            new WpfLanguageFactory(),
+            new HtmlLanguageFactory()
         };
 
         private LanguageFactory currentFactory;
@@ -36,29 +36,25 @@ namespace GuiBuilderUI
         {
             InitializeComponent();
 
-            string[] languages = new string[allFactories.Length];
+            languages = new string[allFactories.Length];
+            
             for(int x = 0; x < allFactories.Length; x++)
             {
                 languages[x] = allFactories[x].GetLanguageName();
+                languageComboBox.Items.Add(languages[x]);
             }
 
-            componentComboBox.SelectedIndex = 0;
+            // Default to the first language in the array
+            languageComboBox.SelectedIndex = 0;
             SwitchLanguage(0);
         }
 
         private void SwitchLanguage(int factoryIndex)
         {
             // Define the new factory
-            string language = languages[factoryIndex];
-            switch (language) // This clears the factory's memory of the added components as well
-            {
-                case "HTML":
-                    currentFactory = new HtmlLanguageFactory();
-                    break;
-                case "WPF":
-                    currentFactory = new WpfLanguageFactory();
-                    break;
-            }
+            // Note: LanguageFactory objects have some "memory" of what components were added to them. 
+            //   Defining a new factory like this "clears" that memory.
+            currentFactory = (LanguageFactory)Activator.CreateInstance(allFactories[factoryIndex].GetType());
 
             // Replace the components list with the new one
             currentComponents = currentFactory.GetAvalibleComponents();
@@ -73,6 +69,9 @@ namespace GuiBuilderUI
 
             // Clear out the list of components
             componentList.Content = "";
+
+            // Reset the selected index
+            componentComboBox.SelectedIndex = 0;
         }
 
         private void languageSwitchButton_Click(object sender, RoutedEventArgs e)
@@ -94,7 +93,7 @@ namespace GuiBuilderUI
 
             if(lastLineBreak != -1)
             {
-                content = content.Substring(lastLineBreak);
+                content = content.Substring(0, lastLineBreak);
             }
             else
             {
