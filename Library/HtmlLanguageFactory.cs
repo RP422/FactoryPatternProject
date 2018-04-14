@@ -15,12 +15,35 @@ namespace Library
 
         public override string[] GetAvalibleComponents()
         {
-            throw new NotImplementedException();
+            return new string[]
+            {
+                "Label",
+                "Button"
+            };
         }
 
         public override string GenerateUI()
         {
-            throw new NotImplementedException();
+            string htmlPrefix = "<DOCTYPE! HTML>\n<body>\n";
+            string htmlPostfix = "</body>";
+            string generatedUI = "";
+
+            string[] usedComponents = components.ToArray();
+
+            foreach (string component in usedComponents)
+            {
+                switch (component)
+                {
+                    case "Label":
+                        generatedUI += "\t<p>Label</p>\n";
+                        break;
+                    case "Button":
+                        generatedUI += "\t<button type=\"button\">Button</button>\n";
+                        break;
+                }
+            }
+
+            return htmlPrefix + generatedUI + htmlPostfix;
         }
     }
 }

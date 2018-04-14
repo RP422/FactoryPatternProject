@@ -15,7 +15,13 @@ namespace Library
 
         public override string[] GetAvalibleComponents()
         {
-            throw new NotImplementedException();
+            return new string[]
+            {
+                "Label",
+                "Button",
+                "Checkbox",
+                "Slider"
+            };
         }
 
         public override string GenerateUI()

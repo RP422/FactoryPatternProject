@@ -107,7 +107,10 @@ namespace GuiBuilderUI
         {
             string generatedUI = currentFactory.GenerateUI();
 
-            // Open new text box and display
+            CodeDisplayWindow newWindow = new CodeDisplayWindow();
+
+            newWindow.CodeLabel.Content = generatedUI;
+            newWindow.Show();
         }
     }
 }
