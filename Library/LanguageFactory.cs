@@ -9,7 +9,7 @@ namespace Library
     public abstract class LanguageFactory
     {
         protected Stack<string> components = new Stack<string>();
-
+        
         public abstract string GetLanguageName();
         public abstract string[] GetAvalibleComponents();
 

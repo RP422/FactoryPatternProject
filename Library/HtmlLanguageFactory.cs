@@ -30,9 +30,9 @@ namespace Library
 
             string[] usedComponents = components.ToArray();
 
-            foreach (string component in usedComponents)
+            for(int x = usedComponents.Length - 1; x >= 0; x--)
             {
-                switch (component)
+                switch (usedComponents[x])
                 {
                     case "Label":
                         generatedUI += "\t<p>Label</p>\n";
