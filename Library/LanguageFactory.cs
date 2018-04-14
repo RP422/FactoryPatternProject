@@ -11,7 +11,7 @@ namespace Library
         protected Stack<string> components = new Stack<string>();
         
         public abstract string GetLanguageName();
-        public abstract List<String> GetAvalibleComponents();
+        public abstract string[] GetAvalibleComponents();
 
         public void AddComponent(string s)
         {
