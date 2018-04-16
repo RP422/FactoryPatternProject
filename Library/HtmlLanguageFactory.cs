@@ -12,6 +12,10 @@ namespace Library
         {
             return "HTML";
         }
+        public override string GetWarning()
+        {
+            return "Any values placed in the X Coordinate\nand Y Coordinate text boxes will be ignored";
+        }
 
         public override string[] GetAvalibleComponents()
         {
@@ -26,24 +30,35 @@ namespace Library
         {
             string htmlPrefix = "<DOCTYPE! HTML>\n<body>\n";
             string htmlPostfix = "</body>";
-            string generatedUI = "";
 
-            string[] usedComponents = components.ToArray();
+            string generatedHtml = "";
+            string generatedCss = "";
 
+            int labelID = 0;
+            int buttonID = 0;
+
+            string componentID = "";
+
+            Component[] usedComponents = components.ToArray();
             for(int x = usedComponents.Length - 1; x >= 0; x--)
             {
-                switch (usedComponents[x])
+                switch (usedComponents[x].type)
                 {
                     case "Label":
-                        generatedUI += "\t<p>Label</p>\n";
+                        componentID = "label" + ++labelID;
+                        generatedHtml += "\t<p id=\"" + componentID + "\">Label</p>\n";
                         break;
                     case "Button":
-                        generatedUI += "\t<button type=\"button\">Button</button>\n";
+                        componentID = "button" + ++buttonID;
+                        generatedHtml += "\t<button id=\"" + componentID + "\" type=\"button\">Button</button>\n";
                         break;
                 }
+
+                generatedCss += "\n\n#" + componentID + " {\n\theight: " + usedComponents[x].height + "px;\n\twidth: " + usedComponents[x].width + "px;\n}";
             }
 
-            return htmlPrefix + generatedUI + htmlPostfix;
+
+            return "HTML:\n\n" + htmlPrefix + generatedHtml + htmlPostfix + "\n\nCSS:" + generatedCss;
         }
     }
 }

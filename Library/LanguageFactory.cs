@@ -8,14 +8,15 @@ namespace Library
 {
     public abstract class LanguageFactory
     {
-        protected Stack<string> components = new Stack<string>();
+        protected Stack<Component> components = new Stack<Component>();
         
         public abstract string GetLanguageName();
+        public abstract string GetWarning();
         public abstract string[] GetAvalibleComponents();
 
-        public void AddComponent(string s)
+        public void AddComponent(string type, int xCoordinate, int yCoordinate, int height, int width)
         {
-            components.Push(s);
+            components.Push(new Library.Component(type, xCoordinate, yCoordinate, height, width));
         }
         public void RemoveComponent()
         {

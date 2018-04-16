@@ -13,6 +13,11 @@ namespace Library
             return "WPF";
         }
 
+        public override string GetWarning()
+        {
+            return "";
+        }
+
         public override string[] GetAvalibleComponents()
         {
             return new string[]
@@ -38,9 +43,8 @@ namespace Library
             string wpfPostfix = "\t</ Grid >\n</ Window >";
 
             String UI = "";
-            string[] usedComponents = components.ToArray();
-
-            int downMargin = 15;
+            Component[] usedComponents = components.ToArray();
+            
             int labelCount = 0;
             int comboBoxCount = 0;
             int textBoxCount = 0;
@@ -48,23 +52,29 @@ namespace Library
 
             for(int x = usedComponents.Length - 1; x >= 0; x--)
             {
-                switch(usedComponents[x])
+                switch(usedComponents[x].type)
                 {
                     case "Label":
-                        UI += "\t\t<Label x: Name = /\"label" + ++labelCount + "\"HorizontalAlignment = \"Right\" Margin = \"15," + downMargin + ",0,0\" />" + "\n";
+                        UI += "\t\t<Label x: Name = /\"label" + ++labelCount + "\"HorizontalAlignment = \"Right\" " + 
+                            "Margin = \"" + usedComponents[x].yCoordinate + "," + usedComponents[x].xCoordinate + ",0,0\"" +
+                            "Height = \"" + usedComponents[x].height + "\" Width = \"" + usedComponents[x].width + "\"/>\n";
                         break;
                     case "ComboBox":
-                        UI += "\t\t<ComboBox x:Name=\"comboBox" + ++comboBoxCount + " \"HorizontalAlignment = \"Right\" VerticalAlignment=\"Bottom\" Margin=\"15," + downMargin + ",0,0\"/>\n";
+                        UI += "\t\t<ComboBox x:Name=\"comboBox" + ++comboBoxCount + " \"HorizontalAlignment = \"Right\" VerticalAlignment=\"Bottom\" " +
+                            "Margin=\"" + usedComponents[x].yCoordinate + "," + usedComponents[x].xCoordinate + ",0,0\"" +
+                            "Height = \"" + usedComponents[x].height + "\" Width = \"" + usedComponents[x].width + "\"/>\n";
                         break;
                     case "TextBox":
-                        UI += "\t\t<TextBox x: Name = \"textBox" + ++textBoxCount + "\" HorizontalAlignment = \"Left\" VerticalAlignment = \"Top\" Margin=\"15," + downMargin + ",0,0\" TextWrapping = \"Wrap\"/>\n";
+                        UI += "\t\t<TextBox x: Name = \"textBox" + ++textBoxCount + "\" HorizontalAlignment = \"Left\" VerticalAlignment = \"Top\" " +
+                            "Margin=\"" + usedComponents[x].yCoordinate + "," + usedComponents[x].xCoordinate + ",0,0\" TextWrapping = \"Wrap\"" +
+                            "Height = \"" + usedComponents[x].height + "\" Width = \"" + usedComponents[x].width + "\"/>\n";
                         break;
                     case "Slider":
-                        UI += "\t\t<Slider x:Name=\"slider" + ++sliderCount + "\" HorizontalAlignment=\"Left\" VerticalAlignment=\"Top\" Margin=\"15," + downMargin + ",0,0\"/>\n";
+                        UI += "\t\t<Slider x:Name=\"slider" + ++sliderCount + "\" HorizontalAlignment=\"Left\" VerticalAlignment=\"Top\" " +
+                            "Margin=\"" + usedComponents[x].yCoordinate + "," + usedComponents[x].xCoordinate + ",0,0\"" +
+                            "Height = \"" + usedComponents[x].height + "\" Width = \"" + usedComponents[x].width + "\"/>\n";
                         break;
                 }
-
-                downMargin += 15;
             }
             return wpfPrefix + UI + wpfPostfix;
         }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GuiBuilderUI"
         mc:Ignorable="d"
-        Title="GUI Builder" Height="300" Width="500">
+        Title="GUI Builder" Height="370" Width="500">
     <Grid Margin="0" Background="#FFFFDD00">
         <ComboBox x:Name="languageComboBox" HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Top" Width="135"/>
         <Button x:Name="languageSwitchButton" Content="Switch Language" HorizontalAlignment="Left" Margin="155,15,0,0" VerticalAlignment="Top" Width="125" Click="languageSwitchButton_Click"/>
@@ -14,6 +14,21 @@
         <Button x:Name="removeComponentButton" Content="Remove Component" HorizontalAlignment="Left" Margin="155,87,0,0" VerticalAlignment="Top" Width="125" Click="removeComponentButton_Click"/>
         <Label x:Name="componentList" HorizontalAlignment="Right" Margin="0,15,15,15" Width="170"/>
         <Button x:Name="generateButton" Content="Generate UI" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom" Width="100" Click="generateButton_Click"/>
-       
+        
+        <TextBox x:Name="xBox" HorizontalAlignment="Left" Height="23" Margin="15,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Text="0" PreviewTextInput="NumberValidation"/>
+        <Label x:Name="xLabel" Content="X Coordinate" HorizontalAlignment="Left" Margin="155,120,0,0" VerticalAlignment="Top" Width="80" Height="23"/>
+        <TextBox x:Name="yBox" HorizontalAlignment="Left" Height="23" Margin="15,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Text="0" PreviewTextInput="NumberValidation"/>
+        <Label x:Name="yLabel" Content="Y Coordinate" HorizontalAlignment="Left" Margin="155,148,0,0" VerticalAlignment="Top" Height="23"/>
+        <TextBox x:Name="heightBox" HorizontalAlignment="Left" Height="23" Margin="15,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Text="0" PreviewTextInput="NumberValidation"/>
+        <Label x:Name="heightLabel" Content="Height" HorizontalAlignment="Left" Margin="155,176,0,0" VerticalAlignment="Top" Height="23"/>
+        <TextBox x:Name="widthBox" HorizontalAlignment="Left" Height="23" Margin="15,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Text="0" PreviewTextInput="NumberValidation"/>
+        <Label x:Name="widthLabel" Content="Width" HorizontalAlignment="Left" Margin="155,204,0,0" VerticalAlignment="Top" Height="23"/>
+        <Label x:Name="warningLabel" HorizontalAlignment="Left" Margin="15,232,0,0" VerticalAlignment="Top" Height="66" Width="265">
+            <Label.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="Wrap" />
+                </Style>
+            </Label.Resources>
+        </Label>
     </Grid>
 </Window>

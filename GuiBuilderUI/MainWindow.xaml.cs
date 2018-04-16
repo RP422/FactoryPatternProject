@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -56,6 +57,9 @@ namespace GuiBuilderUI
             //   Defining a new factory like this "clears" that memory.
             currentFactory = (LanguageFactory)Activator.CreateInstance(allFactories[factoryIndex].GetType());
 
+            // Switch out the warning
+            warningLabel.Content = currentFactory.GetWarning();
+
             // Replace the components list with the new one
             currentComponents = currentFactory.GetAvalibleComponents();
             while (!componentComboBox.Items.IsEmpty)
@@ -81,8 +85,20 @@ namespace GuiBuilderUI
 
         private void addComponentButton_Click(object sender, RoutedEventArgs e)
         {
-            currentFactory.AddComponent(currentComponents[componentComboBox.SelectedIndex]);
-            componentList.Content += "\n" + currentComponents[componentComboBox.SelectedIndex];
+            try
+            {
+                int xCoord = Int32.Parse(xBox.Text);
+                int yCoord = Int32.Parse(yBox.Text);
+                int height = Int32.Parse(heightBox.Text);
+                int width = Int32.Parse(widthBox.Text);
+
+                currentFactory.AddComponent(currentComponents[componentComboBox.SelectedIndex], xCoord, yCoord, height, width);
+                componentList.Content += "\n" + currentComponents[componentComboBox.SelectedIndex];
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         private void removeComponentButton_Click(object sender, RoutedEventArgs e)
@@ -111,6 +127,12 @@ namespace GuiBuilderUI
 
             newWindow.CodeLabel.Content = generatedUI;
             newWindow.Show();
+        }
+
+        private void NumberValidation(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
