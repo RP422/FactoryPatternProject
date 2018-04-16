@@ -14,7 +14,7 @@ namespace Library
         }
         public override string GetWarning()
         {
-            return "Any values placed in the X Coordinate\nand Y Coordinate text boxes will be ignored";
+            return "Any values placed in the X Coordinate\nand Y Coordinate boxes will be ignored";
         }
 
         public override string[] GetAvalibleComponents()
